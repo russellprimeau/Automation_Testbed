@@ -1,12 +1,12 @@
 name: Run Python Script with Cache
 run-name: ${{ github.actor }} is running the Python update script
 
-on: 
-  schedule:
-    - cron: "54 * * * *"
+on: [push]
+  # schedule:
+  #   - cron: "3 * * * *"
 
 jobs:
-  Update_data:
+  Update-csv:
     runs-on: ubuntu-latest
 
     steps:
