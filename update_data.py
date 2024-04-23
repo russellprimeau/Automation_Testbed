@@ -8,7 +8,7 @@ def read_last_lines(filename, num_lines):
       filename: The path to the CSV file.
       num_lines: The number of lines to read from the end of the file.
   """
-   with open(filename, 'r') as f:
+  with open(filename, 'r') as f:
     lines = f.readlines()
     last_lines = lines[-num_lines:]  # Get lines from the end using slicing
     for line in last_lines:
