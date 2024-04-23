@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running the Python update script
 
 on: 
   schedule:
-    - cron: "47 * * * *"
+    - cron: "54 * * * *"
 
 jobs:
   Update_data:
