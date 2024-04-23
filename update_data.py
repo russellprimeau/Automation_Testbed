@@ -16,15 +16,19 @@ def read_last_lines(filename, num_lines):
             print(line.rstrip())  # Print lines with trailing newline removed
 
 def commit_changes(data_file, commit_message):
-  """
-  Stages and commits changes to the data file using Git commands.
+    """
+    Stages and commits changes to the data file using the GitHub Actions workflow commands.
 
-  Args:
-      data_file (str): Path to the data file.
-      commit_message (str): Message describing the commit.
-  """
-  !git add data_file
-  !git commit -m "{commit_message}"
+    Args:
+        data_file (str): Path to the data file.
+        commit_message (str): Message describing the commit.
+    """
+    # Use the workflow commands provided by GitHub Actions to commit changes
+    # These commands replace the previous git add and commit commands
+    run =  f"git add {data_file}"
+    subprocess.run(run.split(), check=True)
+    run = f"git commit -m '{commit_message}'"
+    subprocess.run(run.split(), check=True)
 
 # Create a sample DataFrame (replace with your actual data)
 data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 22]}
