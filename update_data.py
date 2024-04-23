@@ -26,4 +26,4 @@ print(df)
 df.to_csv('online_pfl_data.csv', mode='a', index=False, header=False)
 print("Dataframe appended to online_pfl_data.csv:")
 
-read_last_lines('online_pfl_data', 3)
+read_last_lines('online_pfl_data.csv', 3)
