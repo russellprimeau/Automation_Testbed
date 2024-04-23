@@ -1,24 +1,30 @@
-name: Update CSV Data
+name: Update CSV
 
 on:
-  schedule: # Trigger the workflow on a schedule
-    cron: "0 0 * * *"  # This runs the workflow daily at midnight (adjust as needed)
+  schedule:
+    - cron: '0 0 * * *'  # Schedule to run every day at midnight UTC
 
 jobs:
-  update_data:
-    runs-on: ubuntu-latest  # This defines the runner machine (OS)
+  update-csv:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3  # Checks out your code from the Github repository
-      - name: Update your data (replace with your script)  # Script execution step
-        run: |  # Multi-line command execution
-          python update_data.py  # Example script (replace with your actual script name)
-      - name: Add and commit changes  # Committing the updated data
-        run: |
-          git config --global user.email "youremail@example.com"  # Configure git email
-          git config --global user.name "Your Username"  # Configure git username
-          git add -A  # Add all changes
-          git commit -m "Update CSV data (automated)"  # Commit message
-      - uses: actions/checkout@v3  # Checkout (again) to ensure latest code
-      - uses: actions/push@v5  # Pushes the changes to your repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update CSV
+        run: 
+          python update_data.py
+          # Add your script/command here to update the CSV file
+          # For example, you might use a script to generate new CSV data
+          # echo "Date,Value" > data.csv
+          # echo "$(date +%Y-%m-%d),100" >> data.csv
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}  # Permissions using a secret
+          author_name: Russell Primeau
+          author_email: russell.primeau@gmail.com
+          message: Updated CSV file
+          add: 'data.csv'
+          token: ${{ secrets.GITHUB_TOKEN }}
