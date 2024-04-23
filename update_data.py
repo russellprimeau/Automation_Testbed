@@ -15,15 +15,25 @@ def read_last_lines(filename, num_lines):
         for line in last_lines:
             print(line.rstrip())  # Print lines with trailing newline removed
 
+def commit_changes(data_file, commit_message):
+  """
+  Stages and commits changes to the data file using Git commands.
+
+  Args:
+      data_file (str): Path to the data file.
+      commit_message (str): Message describing the commit.
+  """
+  !git add data_file
+  !git commit -m "{commit_message}"
 
 # Create a sample DataFrame (replace with your actual data)
 data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 22]}
 df = pd.DataFrame(data)
 
-print(df)
-
 # Append the DataFrame to an existing CSV (without headers)
-df.to_csv('online_pfl_data.csv', mode='a', index=False, header=False)
-print("Dataframe appended to online_pfl_data.csv:")
+data_file = "online_pfl_data.csv"
+df.to_csv(data_file, mode='a', index=False, header=False)
+print("Dataframe appended to ", data_file)
 
-read_last_lines('online_pfl_data.csv', 6)
+commit_changes(data_file, "Appended new data to CSV file")
+read_last_lines(data_file, 6)
