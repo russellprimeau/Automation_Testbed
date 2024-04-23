@@ -6,7 +6,7 @@ on:
     - cron: "45 * * * *"
 
 jobs:
-  :
+  Update_data:
     runs-on: ubuntu-latest
 
     steps:
