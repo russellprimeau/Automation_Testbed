@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Grant write permissions
+        run: chmod +w online_pfl_data.csv  # Replace with actual path
+
       - name: Cache Python packages
         uses: actions/cache@v4
         with:
