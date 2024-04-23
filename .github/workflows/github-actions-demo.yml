@@ -27,4 +27,4 @@ jobs:
           author_email: russell.primeau@gmail.com
           message: Updated CSV file
           add: 'data.csv'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTO_TOKEN1 }}
